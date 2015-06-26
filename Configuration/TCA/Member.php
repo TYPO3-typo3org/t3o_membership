@@ -188,5 +188,3 @@ $TCA['tx_t3omembership_domain_model_member'] = array(
 		),
 	),
 );
-
-?>
