@@ -6,7 +6,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-            
+
 			<label index="tx_t3omembership_domain_model_member">Member</label>
 			<label index="tx_t3omembership_domain_model_member.name">Name</label>
 			<label index="tx_t3omembership_domain_model_member.external_id">External Id</label>
@@ -23,6 +23,8 @@
 			<label index="tx_t3omembership_domain_model_membership.name">Name</label>
 			<label index="tx_t3omembership_domain_model_membership.logo">Logo</label>
 
+			<label index="tx_t3omembership_task_importmemberstask.name">Import members from CSV file</label>
+			<label index="tx_t3omembership_task_importmemberstask.description">Import members from CSV file</label>
 		</languageKey>
 	</data>
 </T3locallang>

@@ -21,6 +21,8 @@
 			<label index="tx_t3omembership_domain_model_membership.name">name</label>
 			<label index="tx_t3omembership_domain_model_membership.logo">logo</label>
 			<label index="filter">Search</label>
+			<label index="importFile">CSV file to import</label>
+			<label index="storagePid">Where to store the member records</label>
 		</languageKey>
 	</data>
 </T3locallang>
