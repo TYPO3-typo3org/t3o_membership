@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the TYPO3 Membership extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_t3omembership_domain_model_member">TYPO3 association member</label>
+			<label index="tx_t3omembership_domain_model_member.name">Member name</label>
+			<label index="tx_t3omembership_domain_model_member.external_id">externalId</label>
+			<label index="tx_t3omembership_domain_model_member.end_date">endDate</label>
+			<label index="tx_t3omembership_domain_model_member.address">address</label>
+			<label index="tx_t3omembership_domain_model_member.zip">zip</label>
+			<label index="tx_t3omembership_domain_model_member.city">city</label>
+			<label index="tx_t3omembership_domain_model_member.country">country</label>
+			<label index="tx_t3omembership_domain_model_member.email">email</label>
+			<label index="tx_t3omembership_domain_model_member.url">url</label>
+			<label index="tx_t3omembership_domain_model_member.membership">membership</label>
+			<label index="tx_t3omembership_domain_model_membership">Membership</label>
+			<label index="tx_t3omembership_domain_model_membership.name">name</label>
+			<label index="tx_t3omembership_domain_model_membership.logo">logo</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,14 @@
+plugin.tx_t3omembership {
+	view {
+		# cat=plugin.tx_t3omembership/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:t3o_membership/Resources/Private/Templates/
+		# cat=plugin.tx_t3omembership/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:t3o_membership/Resources/Private/Partials/
+		# cat=plugin.tx_t3omembership/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:t3o_membership/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_t3omembership//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
