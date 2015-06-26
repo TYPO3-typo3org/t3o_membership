@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 Tx_Extbase_Utility_Extension::registerPlugin(
 	$_EXTKEY,
 	'List',
-	'Listing'
+	'Association member list'
 );
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'TYPO3 Membership');

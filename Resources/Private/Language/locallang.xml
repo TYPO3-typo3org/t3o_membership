@@ -20,6 +20,7 @@
 			<label index="tx_t3omembership_domain_model_membership">Membership</label>
 			<label index="tx_t3omembership_domain_model_membership.name">name</label>
 			<label index="tx_t3omembership_domain_model_membership.logo">logo</label>
+			<label index="filter">Search</label>
 		</languageKey>
 	</data>
 </T3locallang>

@@ -12,28 +12,3 @@ plugin.tx_t3omembership {
 		# rewrittenPropertyMapper = 1
 	}
 }
-
-plugin.tx_t3omembership._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-t3o-membership table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-t3o-membership table th {
-		font-weight:bold;
-	}
-
-	.tx-t3o-membership table td {
-		vertical-align:top;
-	}
-)
