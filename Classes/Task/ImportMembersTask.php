@@ -35,7 +35,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 	public function execute() {
 		$membershipRecords = $this->getDatabaseConnection()->exec_SELECTgetRows(
 			'uid, name',
-			'tx_t3omembership_domain_model_member',
+			'tx_t3omembership_domain_model_membership',
 			'NOT hidden AND NOT deleted'
 		);
 
