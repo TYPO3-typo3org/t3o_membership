@@ -35,27 +35,26 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 		} else {
 			$this->getDatabaseConnection()->exec_TRUNCATEquery('tx_t3omembership_domain_model_member');
 			$fileData = file($importFile);
+			array_shift($fileData);
 			foreach ($fileData as $key => $line) {
-				if ($key) {
-					$fields = t3lib_div::trimExplode("\t", $line);
-					$member = array(
-						'name' =>  $fields[6],
-						'external_id' => (int) $fields[0],
-						'address' => $fields[7] ? $fields[7] : $fields[8],
-						'zip' => $fields[10],
-						'city' => $fields[11],
-						'end_date' => strtotime($fields[16]),
-						'membership' => $this->getMembershipUid($fields[12]),
-						'pid' => $this->getMembershipStoragePid(),
-						'crdate' => time(),
-						'tstamp' => time()
-					);
+				$fields = t3lib_div::trimExplode("\t", $line);
+				$member = array(
+					'name' =>  $fields[6],
+					'external_id' => (int) $fields[0],
+					'address' => $fields[7] ? $fields[7] : $fields[8],
+					'zip' => $fields[10],
+					'city' => $fields[11],
+					'end_date' => strtotime($fields[16]),
+					'membership' => $this->getMembershipUid($fields[12]),
+					'pid' => $this->getMembershipStoragePid(),
+					'crdate' => time(),
+					'tstamp' => time()
+				);
 
-					$this->getDatabaseConnection()->exec_INSERTquery(
-						'tx_t3omembership_domain_model_member',
-						$member
-					);
-				}
+				$this->getDatabaseConnection()->exec_INSERTquery(
+					'tx_t3omembership_domain_model_member',
+					$member
+				);
 			}
 		}
 
