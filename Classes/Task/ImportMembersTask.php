@@ -41,7 +41,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 				$member = array(
 					'name' =>  $fields[6],
 					'external_id' => (int) $fields[0],
-					'address' => $fields[7] ? $fields[7] : $fields[8],
+					'address' => $fields[7] !== '' ? $fields[7] : $fields[8],
 					'zip' => $fields[10],
 					'city' => $fields[11],
 					'end_date' => strtotime($fields[16]),
