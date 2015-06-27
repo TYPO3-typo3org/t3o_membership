@@ -35,6 +35,13 @@ class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_A
 	protected $logo;
 
 	/**
+	 * @return string
+	 */
+	public function __toString() {
+		return $this->name;
+	}
+
+	/**
 	 * Returns the name
 	 *
 	 * @return string $name

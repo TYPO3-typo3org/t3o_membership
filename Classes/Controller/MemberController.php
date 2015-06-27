@@ -26,6 +26,13 @@ class Tx_T3oMembership_Controller_MemberController extends Tx_Extbase_MVC_Contro
 	protected $memberRepository;
 
 	/**
+	 * membershipRepository
+	 *
+	 * @var Tx_T3oMembership_Domain_Repository_MembershipRepository
+	 */
+	protected $membershipRepository;
+
+	/**
 	 * injectMemberRepository
 	 *
 	 * @param Tx_T3oMembership_Domain_Repository_MemberRepository $memberRepository
@@ -36,12 +43,41 @@ class Tx_T3oMembership_Controller_MemberController extends Tx_Extbase_MVC_Contro
 	}
 
 	/**
+	 * injectMembershipRepository
+	 *
+	 * @param Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository
+	 * @return void
+	 */
+	public function injectMembershipRepository(Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository) {
+		$this->membershipRepository = $membershipRepository;
+	}
+
+	/**
 	 * action list
 	 *
 	 * @return void
 	 */
 	public function listAction() {
-		$members = $this->memberRepository->findAll();
+		$filterMembership = 0;
+		$filterString = '';
+
+		if ($this->request->hasArgument('filter') && $this->request->getArgument('filter')) {
+			$filterString = htmlspecialchars($this->request->getArgument('filter'));
+			$this->view->assign('filter', $filterString);
+		}
+		if ($this->request->hasArgument('membership') && $this->request->getArgument('membership')) {
+			$filterMembership = (int) $this->request->getArgument('membership');
+			$this->view->assign('membership', $filterMembership);
+		}
+
+		if ($filterString || $filterMembership) {
+			$members = $this->memberRepository->findByStringAndMembership($filterString, $filterMembership);
+		} else {
+			$members = $this->memberRepository->findAll();
+		}
+		$memberships = $this->membershipRepository->findAll();
+
+		$this->view->assign('memberships', $memberships);
 		$this->view->assign('members', $members);
 	}
 

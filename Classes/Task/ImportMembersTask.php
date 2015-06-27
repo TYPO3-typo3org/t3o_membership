@@ -32,6 +32,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 		if (!file_exists(PATH_site . $this->getImportFile())) {
 			return FALSE;
 		} else {
+			$this->getDatabaseConnection()->exec_TRUNCATEquery('tx_t3omembership_domain_model_member');
 			$fileData = file(PATH_site . $this->getImportFile());
 			foreach ($fileData as $key => $line) {
 				if ($key) {
@@ -65,11 +66,13 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 	 * @return integer
 	 */
 	protected function getMembershipUid($membershipName) {
-		$membershipName = trim(str_replace('Membership', '', $membershipName));
+		$membershipName = $this->getDatabaseConnection()
+			->fullQuoteStr(trim(str_replace('Membership', '', $membershipName)), 'tx_t3omembership_domain_model_membership');
+
 		$membershipRecord = $this->getDatabaseConnection()->exec_SELECTgetSingleRow(
 			'uid',
 			'tx_t3omembership_domain_model_membership',
-			'name = "' . mysql_real_escape_string($membershipName) . '" AND NOT deleted AND NOT hidden'
+			'name = ' . $membershipName . ' AND NOT deleted AND NOT hidden'
 		);
 		if (!empty($membershipRecord)) {
 			$membershipUid = $membershipRecord['uid'];

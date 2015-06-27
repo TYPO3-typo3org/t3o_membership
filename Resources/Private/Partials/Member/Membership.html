@@ -1,0 +1,29 @@
+<div class="b-members-filter">
+	<ul>
+		<li class="membershiptype-reset act empty-option">
+			<f:link.action action="list" arguments="{filter: '{filterTerm}'}">
+				<f:translate key="allMemberships" />
+			</f:link.action>
+		</li>
+		<f:if condition="{filterTerm}">
+			<f:then>
+				<f:groupedFor each="{members}" as="membershipsOfMembers" groupBy="membership" groupKey="membership">
+					<li>
+						<f:link.action action="list" arguments="{filter: '{filterTerm}', membership: '{membership.uid}'}">
+							<f:image src="uploads/tx_t3omembership/{membership.logo}" alt="{membership.name}" />
+						</f:link.action>
+					</li>
+				</f:groupedFor>
+			</f:then>
+			<f:else>
+				<f:for each="{memberships}" as="membership">
+					<li>
+						<f:link.action action="list" arguments="{membership: '{membership.uid}'}">
+							<f:image src="uploads/tx_t3omembership/{membership.logo}" alt="{membership.name}" />
+						</f:link.action>
+					</li>
+				</f:for>
+			</f:else>
+		</f:if>
+	</ul>
+</div>

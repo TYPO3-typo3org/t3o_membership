@@ -23,6 +23,7 @@
 			<label index="filter">Search</label>
 			<label index="importFile">CSV file to import</label>
 			<label index="storagePid">Where to store the member records</label>
+			<label index="allMemberships">All memberships</label>
 		</languageKey>
 	</data>
 </T3locallang>

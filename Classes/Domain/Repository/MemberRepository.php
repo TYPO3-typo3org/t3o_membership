@@ -18,4 +18,37 @@
  */
 class Tx_T3oMembership_Domain_Repository_MemberRepository extends Tx_Extbase_Persistence_Repository {
 
+	/**
+	 * @var array
+	 */
+	protected $defaultOrderings = array(
+		'membership' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
+		'name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+	);
+
+	/**
+	 * @param string $filterString
+	 * @param integer $filterMembership
+	 * @return Tx_Extbase_Persistence_QueryResultInterface
+	 */
+	public function findByStringAndMembership($filterString, $filterMembership) {
+		$query = $this->createQuery();
+		$constraints = array();
+		if ($filterString) {
+			$filterString = $this->getDatabaseConnection()->escapeStrForLike($filterString, 'tx_t3omembership_domain_model_member');
+			$constraints[] = $query->like('name', '%' . $filterString . '%');
+		}
+		if ($filterMembership) {
+			$constraints[] = $query->equals('membership', $filterMembership);
+		}
+
+		return $query->matching($query->logicalAnd($constraints))->execute();
+	}
+
+	/**
+	 * @return t3lib_DB
+	 */
+	protected function getDatabaseConnection() {
+		return $GLOBALS['TYPO3_DB'];
+	}
 }

@@ -2,8 +2,8 @@
 <f:section name="main">
 <f:flashMessages />
 
-<f:render partial="Member/Filter" />
-<f:render partial="Member/Membership" />
+<f:render partial="Member/Filter" arguments="{filterTerm: filter}" />
+<f:render partial="Member/Membership" arguments="{members: members, memberships: memberships, filterTerm: filter}" />
 
 <table class="tx_t3omembership" >
 	<tr>
