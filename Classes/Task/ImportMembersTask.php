@@ -25,9 +25,24 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 	protected $membershipStoragePid = 0;
 
 	/**
+	 * @var array
+	 */
+	protected $memberships = array();
+
+	/**
 	 * @return boolean
 	 */
 	public function execute() {
+		$membershipRecords = $this->getDatabaseConnection()->exec_SELECTgetRows(
+			'uid, name',
+			'tx_t3omembership_domain_model_member',
+			'NOT hidden AND NOT deleted'
+		);
+
+		foreach ($membershipRecords as $membershipRecord) {
+			$this->memberships[$membershipRecord['name']] = $membershipRecord['uid'];
+		}
+
 		// does the import file exist?
 		$importFile = t3lib_div::getFileAbsFileName($this->getImportFile());
 		if (!file_exists($importFile)) {
@@ -68,31 +83,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 	 * @return integer
 	 */
 	protected function getMembershipUid($membershipName) {
-		$membershipName = $this->getDatabaseConnection()
-			->fullQuoteStr(trim(str_replace('Membership', '', $membershipName)), 'tx_t3omembership_domain_model_membership');
+		$membershipName = trim(str_replace('Membership', '', $membershipName));
 
-		$membershipRecord = $this->getDatabaseConnection()->exec_SELECTgetSingleRow(
-			'uid',
-			'tx_t3omembership_domain_model_membership',
-			'name = ' . $membershipName . ' AND NOT deleted AND NOT hidden'
-		);
-		if (!empty($membershipRecord)) {
-			$membershipUid = $membershipRecord['uid'];
-		} else {
-			$newMembership = array(
-				'name' => mysql_real_escape_string($membershipName),
-				'pid' => $this->getMembershipStoragePid(),
-				'crdate' => time(),
-				'tstamp' => time()
-			);
-			$this->getDatabaseConnection()->exec_INSERTquery(
-				'tx_t3omembership_domain_model_membership',
-				$newMembership
-			);
-			$membershipUid = $this->getDatabaseConnection()->sql_insert_id();
-		}
-
-		return $membershipUid;
+		return $this->memberships[$membershipName];
 	}
 
 	/**
