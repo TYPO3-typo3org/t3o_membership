@@ -29,11 +29,12 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 	 */
 	public function execute() {
 		// does the import file exist?
-		if (!file_exists(PATH_site . $this->getImportFile())) {
+		$importFile = t3lib_div::getFileAbsFileName($this->getImportFile());
+		if (!file_exists($importFile)) {
 			return FALSE;
 		} else {
 			$this->getDatabaseConnection()->exec_TRUNCATEquery('tx_t3omembership_domain_model_member');
-			$fileData = file(PATH_site . $this->getImportFile());
+			$fileData = file($importFile);
 			foreach ($fileData as $key => $line) {
 				if ($key) {
 					$fields = t3lib_div::trimExplode("\t", $line);
