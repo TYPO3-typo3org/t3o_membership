@@ -51,10 +51,12 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 					'tstamp' => time()
 				);
 
-				$this->getDatabaseConnection()->exec_INSERTquery(
+				$resource = $this->getDatabaseConnection()->exec_INSERTquery(
 					'tx_t3omembership_domain_model_member',
 					$member
 				);
+
+				$this->getDatabaseConnection()->sql_free_result($resource);
 			}
 		}
 
