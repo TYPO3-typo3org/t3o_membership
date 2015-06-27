@@ -30,13 +30,13 @@ class Tx_T3oMembership_Task_ImportMembers_AdditionalFieldProvider implements tx_
 		$additionalFields = array();
 		// adds field for setting file path for CSV file to import
 		$additionalFields['importFile'] = array(
-			'code' => '<input type="text" name="tx_scheduler[importFile]" value="' . $task->getImportFile() . '" />',
+			'code' => '<input type="text" name="tx_scheduler[importFile]" value="' . htmlspecialchars($task->getImportFile()) . '" />',
 			'label' => Tx_Extbase_Utility_Localization::translate('importFile', 't3o_membership')
 		);
 
 		// adds field for setting storage PID
 		$additionalFields['storagePid'] = array(
-			'code' => '<input type="text" name="tx_scheduler[storagePid]" value="' . $task->getMembershipStoragePid() . '" />',
+			'code' => '<input type="text" name="tx_scheduler[storagePid]" value="' . (int) $task->getMembershipStoragePid() . '" />',
 			'label' => Tx_Extbase_Utility_Localization::translate('storagePid', 't3o_membership')
 		);
 
