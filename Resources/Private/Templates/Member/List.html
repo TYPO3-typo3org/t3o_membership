@@ -5,19 +5,19 @@
 <f:render partial="Member/Filter" arguments="{filterTerm: filter}" />
 <f:render partial="Member/Membership" arguments="{members: members, memberships: memberships, filterTerm: filter}" />
 
-<table class="tx_t3omembership" >
+<table class="tx_t3omembership featured" >
 	<tr>
 		<th><f:translate key="tx_t3omembership_domain_model_member.name" /></th>
-		<th><f:translate key="tx_t3omembership_domain_model_member.country" /></th>
 		<th><f:translate key="tx_t3omembership_domain_model_member.membership" /></th>
 	</tr>
 
 	<f:for each="{members}" as="member">
-		<tr>
-			<td>{member.name}</td>
-			<td>{member.country}</td>
-			<td>{member.membership}</td>
-		</tr>
+		<f:cycle values="{0: 'tr-even', 1: 'tr-odd'}" as="cycle">
+			<tr class="{cycle}">
+				<td>{member.name}</td>
+				<td>{member.membership}</td>
+			</tr>
+		</f:cycle>
 	</f:for>
 </table>
 </f:section>

@@ -1,4 +1,4 @@
-<form method="GET">
-	<f:form.textfield name="tx_t3omembership_list[filter]" value="{filterTerm}" />
+<f:form action="list" method="POST">
+	<f:form.textfield id="t3o_membership_filter" name="filter" value="{filterTerm}" />
 	<f:form.submit value="{f:translate(key:'filter')}" class="bu" />
-</form>
+</f:form>

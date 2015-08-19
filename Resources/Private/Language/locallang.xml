@@ -16,7 +16,7 @@
 			<label index="tx_t3omembership_domain_model_member.country">country</label>
 			<label index="tx_t3omembership_domain_model_member.email">email</label>
 			<label index="tx_t3omembership_domain_model_member.url">url</label>
-			<label index="tx_t3omembership_domain_model_member.membership">membership</label>
+			<label index="tx_t3omembership_domain_model_member.membership">Membership</label>
 			<label index="tx_t3omembership_domain_model_membership">Membership</label>
 			<label index="tx_t3omembership_domain_model_membership.name">name</label>
 			<label index="tx_t3omembership_domain_model_membership.logo">logo</label>
