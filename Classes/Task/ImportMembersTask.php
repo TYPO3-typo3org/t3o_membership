@@ -63,7 +63,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 					'membership' => $this->getMembershipUid($fields[12]),
 					'pid' => $this->getMembershipStoragePid(),
 					'crdate' => time(),
-					'tstamp' => time()
+					'tstamp' => time(),
+					'email' => $fields[84],
+					'url' => $fields[80]
 				);
 
 				$resource = $this->getDatabaseConnection()->exec_INSERTquery(
