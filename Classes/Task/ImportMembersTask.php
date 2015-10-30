@@ -33,6 +33,8 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 	 * @return boolean
 	 */
 	public function execute() {
+
+		t3lib_div::devLog('[tx_scheduler_ImportMember]: execute', 't3o_membership', 0);
 		$membershipRecords = $this->getDatabaseConnection()->exec_SELECTgetRows(
 			'uid, name',
 			'tx_t3omembership_domain_model_membership',
@@ -46,6 +48,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 		// does the import file exist?
 		$importFile = t3lib_div::getFileAbsFileName($this->getImportFile());
 		if (!file_exists($importFile)) {
+			t3lib_div::devLog('[tx_scheduler_ImportMember]: no importfile - given value: ' . $importFile, 't3o_membership', 0);
 			return FALSE;
 		} else {
 			$this->getDatabaseConnection()->exec_TRUNCATEquery('tx_t3omembership_domain_model_member');
@@ -65,7 +68,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 					'crdate' => time(),
 					'tstamp' => time(),
 					'email' => $fields[84],
-					'url' => $fields[80]
+					'url' => $fields[80],
+					'firstname' => $fields[82],
+					'lastname' => $fields[83]
 				);
 
 				$resource = $this->getDatabaseConnection()->exec_INSERTquery(
