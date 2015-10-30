@@ -83,11 +83,41 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
 	protected $email;
 
 	/**
+	 * firstname
+	 *
+	 * @var string
+	 */
+	protected $firstname;
+
+	/**
 	 * url
 	 *
 	 * @var string
 	 */
 	protected $url;
+
+	/**
+	 * lastname
+	 *
+	 * @var string
+	 */
+	protected $lastname;
+
+	/**
+	 * @return string
+	 */
+	public function getLastname()
+	{
+		return $this->lastname;
+	}
+
+	/**
+	 * @param string $lastname
+	 */
+	public function setLastname($lastname)
+	{
+		$this->lastname = $lastname;
+	}
 
 	/**
 	 * membership
@@ -115,6 +145,22 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
 		$this->name = $name;
 	}
 
+
+	/**
+	 * @return string
+	 */
+	public function getFirstname()
+	{
+		return $this->firstname;
+	}
+
+	/**
+	 * @param string $firstname
+	 */
+	public function setFirstname($firstname)
+	{
+		$this->firstname = $firstname;
+	}
 	/**
 	 * Returns the externalId
 	 *
