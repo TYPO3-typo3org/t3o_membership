@@ -56,18 +56,23 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task {
 			array_shift($fileData);
 			foreach ($fileData as $key => $line) {
 				$fields = t3lib_div::trimExplode("\t", $line);
+				$endTime = strtotime($fields[15]);
 				$member = array(
-					'name' =>  $fields[6],
-					'external_id' => (int) $fields[0],
+					'name' => $fields[6],
+					'external_id' => (int)$fields[0],
 					'address' => $fields[7] !== '' ? $fields[7] : $fields[8],
 					'zip' => $fields[10],
 					'city' => $fields[11],
-					'end_date' => strtotime($fields[16]),
+					'country' => $fields[13],
+					'end_date' => $endTime,
+					'endtime' => $endTime,
+					'starttime' => strtotime(date('d.m.Y', $endTime) . ' -1 year'),
 					'membership' => $this->getMembershipUid($fields[12]),
 					'pid' => $this->getMembershipStoragePid(),
 					'crdate' => time(),
 					'tstamp' => time(),
-					'email' => $fields[84],
+					'invoice_email' => $fields[84],
+					'email' => $fields[79],
 					'url' => $fields[80],
 					'firstname' => $fields[82],
 					'lastname' => $fields[83]

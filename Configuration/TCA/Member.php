@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_t3omembership_domain_model_member'] = array(
 	'ctrl' => $TCA['tx_t3omembership_domain_model_member']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, firstname, lastname, external_id, end_date, address, zip, city, country, email, url, membership',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, firstname, lastname, external_id, end_date, address, zip, city, country, email, invoice_email, url, membership',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, firstname, lastname, external_id, end_date, address, zip, city, country, email, url, membership,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, firstname, lastname, external_id, end_date, address, zip, city, country, email, invoice_email, url, membership,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -165,6 +165,15 @@ $TCA['tx_t3omembership_domain_model_member'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
+			),
+		),
+		'invoice_email' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:t3o_membership/Resources/Private/Language/locallang_db.xml:tx_t3omembership_domain_model_member.invoice_email',
+			'config' => array(
+					'type' => 'input',
+					'size' => 30,
+					'eval' => 'trim,required'
 			),
 		),
 		'url' => array(

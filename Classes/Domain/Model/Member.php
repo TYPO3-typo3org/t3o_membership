@@ -104,20 +104,9 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
 	protected $lastname;
 
 	/**
-	 * @return string
+	 * @var string
 	 */
-	public function getLastname()
-	{
-		return $this->lastname;
-	}
-
-	/**
-	 * @param string $lastname
-	 */
-	public function setLastname($lastname)
-	{
-		$this->lastname = $lastname;
-	}
+	protected $invoiceEmail;
 
 	/**
 	 * membership
@@ -161,6 +150,21 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
 	{
 		$this->firstname = $firstname;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getLastname() {
+		return $this->lastname;
+	}
+
+	/**
+	 * @param string $lastname
+	 */
+	public function setLastname($lastname) {
+		$this->lastname = $lastname;
+	}
+
 	/**
 	 * Returns the externalId
 	 *
@@ -311,6 +315,20 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
 	 */
 	public function setUrl($url) {
 		$this->url = $url;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getInvoiceEmail() {
+		return $this->invoiceEmail;
+	}
+
+	/**
+	 * @param string $invoiceEmail
+	 */
+	public function setInvoiceEmail($invoiceEmail) {
+		$this->invoiceEmail = $invoiceEmail;
 	}
 
 	/**

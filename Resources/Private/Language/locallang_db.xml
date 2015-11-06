@@ -16,6 +16,7 @@
 			<label index="tx_t3omembership_domain_model_member.city">City</label>
 			<label index="tx_t3omembership_domain_model_member.country">Country</label>
 			<label index="tx_t3omembership_domain_model_member.email">Email</label>
+			<label index="tx_t3omembership_domain_model_member.invoice_email">Invoice Email</label>
 			<label index="tx_t3omembership_domain_model_member.url">Url</label>
 			<label index="tx_t3omembership_domain_model_member.firstname">Firstname</label>
 			<label index="tx_t3omembership_domain_model_member.lastname">Lastname</label>
