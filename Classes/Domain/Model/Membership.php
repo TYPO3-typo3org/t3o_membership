@@ -14,69 +14,76 @@
 
 /**
  * Class Tx_T3oMembership_Domain_Model_Membership
+ *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_AbstractValueObject
+{
 
-	/**
-	 * name
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $name;
+    /**
+     * name
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $name;
 
-	/**
-	 * logo
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $logo;
+    /**
+     * logo
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $logo;
 
-	/**
-	 * @return string
-	 */
-	public function __toString() {
-		return $this->name;
-	}
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * Returns the name
-	 *
-	 * @return string $name
-	 */
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * Returns the name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * Sets the name
-	 *
-	 * @param string $name
-	 * @return void
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
+    /**
+     * Sets the name
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-	/**
-	 * Returns the logo
-	 *
-	 * @return string $logo
-	 */
-	public function getLogo() {
-		return $this->logo;
-	}
+    /**
+     * Returns the logo
+     *
+     * @return string $logo
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
 
-	/**
-	 * Sets the logo
-	 *
-	 * @param string $logo
-	 * @return void
-	 */
-	public function setLogo($logo) {
-		$this->logo = $logo;
-	}
+    /**
+     * Sets the logo
+     *
+     * @param string $logo
+     * @return void
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+    }
 
 }

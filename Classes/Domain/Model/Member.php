@@ -14,340 +14,366 @@
 
 /**
  * Class Tx_T3oMembership_Domain_Model_Member
+ *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_AbstractEntity
+{
 
-	/**
-	 * Member name
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $name;
+    /**
+     * Member name
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $name;
 
-	/**
-	 * externalId
-	 *
-	 * @var integer
-	 * @validate NotEmpty
-	 */
-	protected $externalId;
+    /**
+     * externalId
+     *
+     * @var integer
+     * @validate NotEmpty
+     */
+    protected $externalId;
 
-	/**
-	 * endDate
-	 *
-	 * @var DateTime
-	 * @validate NotEmpty
-	 */
-	protected $endDate;
+    /**
+     * endDate
+     *
+     * @var DateTime
+     * @validate NotEmpty
+     */
+    protected $endDate;
 
-	/**
-	 * address
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $address;
+    /**
+     * address
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $address;
 
-	/**
-	 * zip
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $zip;
+    /**
+     * zip
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $zip;
 
-	/**
-	 * city
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $city;
+    /**
+     * city
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $city;
 
-	/**
-	 * country
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $country;
+    /**
+     * country
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $country;
 
-	/**
-	 * email
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $email;
+    /**
+     * email
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $email;
 
-	/**
-	 * firstname
-	 *
-	 * @var string
-	 */
-	protected $firstname;
+    /**
+     * firstname
+     *
+     * @var string
+     */
+    protected $firstname;
 
-	/**
-	 * url
-	 *
-	 * @var string
-	 */
-	protected $url;
+    /**
+     * url
+     *
+     * @var string
+     */
+    protected $url;
 
-	/**
-	 * lastname
-	 *
-	 * @var string
-	 */
-	protected $lastname;
+    /**
+     * lastname
+     *
+     * @var string
+     */
+    protected $lastname;
 
-	/**
-	 * @var string
-	 */
-	protected $invoiceEmail;
+    /**
+     * @var string
+     */
+    protected $invoiceEmail;
 
-	/**
-	 * membership
-	 *
-	 * @var Tx_T3oMembership_Domain_Model_Membership
-	 */
-	protected $membership;
+    /**
+     * membership
+     *
+     * @var Tx_T3oMembership_Domain_Model_Membership
+     */
+    protected $membership;
 
-	/**
-	 * Returns the name
-	 *
-	 * @return string $name
-	 */
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * Returns the name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * Sets the name
-	 *
-	 * @param string $name
-	 * @return void
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
+    /**
+     * Sets the name
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
 
-	/**
-	 * @return string
-	 */
-	public function getFirstname()
-	{
-		return $this->firstname;
-	}
+    /**
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
 
-	/**
-	 * @param string $firstname
-	 */
-	public function setFirstname($firstname)
-	{
-		$this->firstname = $firstname;
-	}
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getLastname() {
-		return $this->lastname;
-	}
+    /**
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
 
-	/**
-	 * @param string $lastname
-	 */
-	public function setLastname($lastname) {
-		$this->lastname = $lastname;
-	}
+    /**
+     * @param string $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
 
-	/**
-	 * Returns the externalId
-	 *
-	 * @return integer $externalId
-	 */
-	public function getExternalId() {
-		return $this->externalId;
-	}
+    /**
+     * Returns the externalId
+     *
+     * @return integer $externalId
+     */
+    public function getExternalId()
+    {
+        return $this->externalId;
+    }
 
-	/**
-	 * Sets the externalId
-	 *
-	 * @param integer $externalId
-	 * @return void
-	 */
-	public function setExternalId($externalId) {
-		$this->externalId = $externalId;
-	}
+    /**
+     * Sets the externalId
+     *
+     * @param integer $externalId
+     * @return void
+     */
+    public function setExternalId($externalId)
+    {
+        $this->externalId = $externalId;
+    }
 
-	/**
-	 * Returns the endDate
-	 *
-	 * @return DateTime $endDate
-	 */
-	public function getEndDate() {
-		return $this->endDate;
-	}
+    /**
+     * Returns the endDate
+     *
+     * @return DateTime $endDate
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
 
-	/**
-	 * Sets the endDate
-	 *
-	 * @param DateTime $endDate
-	 * @return void
-	 */
-	public function setEndDate($endDate) {
-		$this->endDate = $endDate;
-	}
+    /**
+     * Sets the endDate
+     *
+     * @param DateTime $endDate
+     * @return void
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+    }
 
-	/**
-	 * Returns the address
-	 *
-	 * @return string $address
-	 */
-	public function getAddress() {
-		return $this->address;
-	}
+    /**
+     * Returns the address
+     *
+     * @return string $address
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
 
-	/**
-	 * Sets the address
-	 *
-	 * @param string $address
-	 * @return void
-	 */
-	public function setAddress($address) {
-		$this->address = $address;
-	}
+    /**
+     * Sets the address
+     *
+     * @param string $address
+     * @return void
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
 
-	/**
-	 * Returns the zip
-	 *
-	 * @return string $zip
-	 */
-	public function getZip() {
-		return $this->zip;
-	}
+    /**
+     * Returns the zip
+     *
+     * @return string $zip
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
 
-	/**
-	 * Sets the zip
-	 *
-	 * @param string $zip
-	 * @return void
-	 */
-	public function setZip($zip) {
-		$this->zip = $zip;
-	}
+    /**
+     * Sets the zip
+     *
+     * @param string $zip
+     * @return void
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+    }
 
-	/**
-	 * Returns the city
-	 *
-	 * @return string $city
-	 */
-	public function getCity() {
-		return $this->city;
-	}
+    /**
+     * Returns the city
+     *
+     * @return string $city
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
 
-	/**
-	 * Sets the city
-	 *
-	 * @param string $city
-	 * @return void
-	 */
-	public function setCity($city) {
-		$this->city = $city;
-	}
+    /**
+     * Sets the city
+     *
+     * @param string $city
+     * @return void
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
 
-	/**
-	 * Returns the country
-	 *
-	 * @return string $country
-	 */
-	public function getCountry() {
-		return $this->country;
-	}
+    /**
+     * Returns the country
+     *
+     * @return string $country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
 
-	/**
-	 * Sets the country
-	 *
-	 * @param string $country
-	 * @return void
-	 */
-	public function setCountry($country) {
-		$this->country = $country;
-	}
+    /**
+     * Sets the country
+     *
+     * @param string $country
+     * @return void
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
 
-	/**
-	 * Returns the email
-	 *
-	 * @return string $email
-	 */
-	public function getEmail() {
-		return $this->email;
-	}
+    /**
+     * Returns the email
+     *
+     * @return string $email
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-	/**
-	 * Sets the email
-	 *
-	 * @param string $email
-	 * @return void
-	 */
-	public function setEmail($email) {
-		$this->email = $email;
-	}
+    /**
+     * Sets the email
+     *
+     * @param string $email
+     * @return void
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 
-	/**
-	 * Returns the url
-	 *
-	 * @return string $url
-	 */
-	public function getUrl() {
-		return $this->url;
-	}
+    /**
+     * Returns the url
+     *
+     * @return string $url
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
 
-	/**
-	 * Sets the url
-	 *
-	 * @param string $url
-	 * @return void
-	 */
-	public function setUrl($url) {
-		$this->url = $url;
-	}
+    /**
+     * Sets the url
+     *
+     * @param string $url
+     * @return void
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getInvoiceEmail() {
-		return $this->invoiceEmail;
-	}
+    /**
+     * @return string
+     */
+    public function getInvoiceEmail()
+    {
+        return $this->invoiceEmail;
+    }
 
-	/**
-	 * @param string $invoiceEmail
-	 */
-	public function setInvoiceEmail($invoiceEmail) {
-		$this->invoiceEmail = $invoiceEmail;
-	}
+    /**
+     * @param string $invoiceEmail
+     */
+    public function setInvoiceEmail($invoiceEmail)
+    {
+        $this->invoiceEmail = $invoiceEmail;
+    }
 
-	/**
-	 * Returns the membership
-	 *
-	 * @return Tx_T3oMembership_Domain_Model_Membership $membership
-	 */
-	public function getMembership() {
-		return $this->membership;
-	}
+    /**
+     * Returns the membership
+     *
+     * @return Tx_T3oMembership_Domain_Model_Membership $membership
+     */
+    public function getMembership()
+    {
+        return $this->membership;
+    }
 
-	/**
-	 * Sets the membership
-	 *
-	 * @param Tx_T3oMembership_Domain_Model_Membership $membership
-	 * @return void
-	 */
-	public function setMembership(Tx_T3oMembership_Domain_Model_Membership $membership) {
-		$this->membership = $membership;
-	}
+    /**
+     * Sets the membership
+     *
+     * @param Tx_T3oMembership_Domain_Model_Membership $membership
+     * @return void
+     */
+    public function setMembership(Tx_T3oMembership_Domain_Model_Membership $membership)
+    {
+        $this->membership = $membership;
+    }
 
 }

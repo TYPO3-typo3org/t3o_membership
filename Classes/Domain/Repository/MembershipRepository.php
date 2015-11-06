@@ -14,15 +14,17 @@
 
 /**
  * Class Tx_T3oMembership_Domain_Repository_MembershipRepository
+ *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Domain_Repository_MembershipRepository extends Tx_Extbase_Persistence_Repository {
+class Tx_T3oMembership_Domain_Repository_MembershipRepository extends Tx_Extbase_Persistence_Repository
+{
 
-	/**
-	 * @var array
-	 */
-	protected $defaultOrderings = array(
-		'uid' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
-	);
+    /**
+     * @var array
+     */
+    protected $defaultOrderings = array(
+        'uid' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+    );
 
 }

@@ -11,31 +11,28 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'TYPO3 Membership',
-	'description' => 'Provides the TYPO3 association members and an import/export possibility',
-	'category' => 'plugin',
-	'author' => 'Thomas Löffler',
-	'author_email' => 'thomas.loeffler@typo3.org',
-	'author_company' => '',
-	'shy' => '',
-	'priority' => '',
-	'module' => '',
-	'state' => 'stable',
-	'internal' => '',
-	'uploadfolder' => '1',
-	'createDirs' => '',
-	'modify_tables' => '',
-	'clearCacheOnLoad' => 0,
-	'lockType' => '',
-	'version' => '1.1.1',
-	'constraints' => array(
-		'depends' => array(
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
+    'title' => 'TYPO3 Membership',
+    'description' => 'Provides the TYPO3 association members and an import/export possibility',
+    'category' => 'plugin',
+    'author' => 'Thomas Löffler',
+    'author_email' => 'thomas.loeffler@typo3.org',
+    'author_company' => '',
+    'shy' => '',
+    'priority' => '',
+    'module' => '',
+    'state' => 'stable',
+    'internal' => '',
+    'uploadfolder' => '1',
+    'createDirs' => '',
+    'modify_tables' => '',
+    'clearCacheOnLoad' => 0,
+    'lockType' => '',
+    'version' => '1.1.1',
+    'constraints' => array(
+        'depends' => array(),
+        'conflicts' => array(),
+        'suggests' => array(),
+    ),
 );
 
 ?>
