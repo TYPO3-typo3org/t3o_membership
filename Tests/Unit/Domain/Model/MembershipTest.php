@@ -14,54 +14,64 @@
 
 /**
  * Testcase.
+ *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Domain_Model_MembershipTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_T3oMembership_Domain_Model_Membership
-	 */
-	protected $fixture;
+class Tx_T3oMembership_Domain_Model_MembershipTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
+    /**
+     * @var Tx_T3oMembership_Domain_Model_Membership
+     */
+    protected $fixture;
 
-	public function setUp() {
-		$this->fixture = new Tx_T3oMembership_Domain_Model_Membership();
-	}
+    public function setUp()
+    {
+        $this->fixture = new Tx_T3oMembership_Domain_Model_Membership();
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function getNameReturnsInitialValueForString() { }
+    /**
+     * @test
+     */
+    public function getNameReturnsInitialValueForString()
+    {
+    }
 
-	/**
-	 * @test
-	 */
-	public function setNameForStringSetsName() {
-		$this->fixture->setName('Conceived at T3CON10');
+    /**
+     * @test
+     */
+    public function setNameForStringSetsName()
+    {
+        $this->fixture->setName('Conceived at T3CON10');
 
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getName()
-		);
-	}
+        $this->assertSame(
+            'Conceived at T3CON10',
+            $this->fixture->getName()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function getLogoReturnsInitialValueForString() { }
+    /**
+     * @test
+     */
+    public function getLogoReturnsInitialValueForString()
+    {
+    }
 
-	/**
-	 * @test
-	 */
-	public function setLogoForStringSetsLogo() {
-		$this->fixture->setLogo('Conceived at T3CON10');
+    /**
+     * @test
+     */
+    public function setLogoForStringSetsLogo()
+    {
+        $this->fixture->setLogo('Conceived at T3CON10');
 
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getLogo()
-		);
-	}
+        $this->assertSame(
+            'Conceived at T3CON10',
+            $this->fixture->getLogo()
+        );
+    }
 
 }

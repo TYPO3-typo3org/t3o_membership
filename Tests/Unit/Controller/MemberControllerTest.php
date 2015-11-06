@@ -14,27 +14,32 @@
 
 /**
  * Testcase.
+ *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3o_membership_Controller_MemberControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_T3oMembership_Domain_Model_Member
-	 */
-	protected $fixture;
+class Tx_T3o_membership_Controller_MemberControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+{
+    /**
+     * @var Tx_T3oMembership_Domain_Model_Member
+     */
+    protected $fixture;
 
-	public function setUp() {
-		$this->fixture = new Tx_T3oMembership_Domain_Model_Member();
-	}
+    public function setUp()
+    {
+        $this->fixture = new Tx_T3oMembership_Domain_Model_Member();
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function dummyMethod() {
-		$this->markTestIncomplete();
-	}
+    /**
+     * @test
+     */
+    public function dummyMethod()
+    {
+        $this->markTestIncomplete();
+    }
 
 }
