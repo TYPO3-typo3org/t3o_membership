@@ -14,7 +14,6 @@
 
 /**
  * Class Tx_T3oMembership_Domain_Model_Membership
- *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
 class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_AbstractValueObject
@@ -35,6 +34,15 @@ class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_A
      * @validate NotEmpty
      */
     protected $logo;
+
+    /**
+     * personalMembership
+     *
+     * @var bool
+     * @validate NotEmpty
+     */
+    protected $personalMembership;
+
 
     /**
      * @return string
@@ -85,5 +93,38 @@ class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_A
     {
         $this->logo = $logo;
     }
+
+    /**
+     * Returns the status of a membership (personal or company)
+     *
+     * @return bool
+     */
+    public function getPersonalMembership()
+    {
+        return $this->personalMembership;
+    }
+
+    /**
+     * Sets the logo
+     *
+     * @param bool $personalMembership
+     * @return void
+     */
+    public function setPersonalMembership($personalMembership)
+    {
+        $this->personalMembership = $personalMembership;
+    }
+
+
+    /**
+     * Returns true, if the membership is a personal membership
+     *
+     * @return bool
+     */
+    public function isPersonalMembership()
+    {
+        return $this->personalMembership;
+    }
+
 
 }

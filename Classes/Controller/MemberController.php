@@ -51,8 +51,9 @@ class Tx_T3oMembership_Controller_MemberController extends Tx_Extbase_MVC_Contro
      * @param Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository
      * @return void
      */
-    public function injectMembershipRepository(Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository)
-    {
+    public function injectMembershipRepository(
+        Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository
+    ) {
         $this->membershipRepository = $membershipRepository;
     }
 

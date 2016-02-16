@@ -53,7 +53,8 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
             $importFile = t3lib_div::getFileAbsFileName($importFile);
         }
         if (!file_exists($importFile)) {
-            t3lib_div::devLog('[tx_scheduler_ImportMember]: no importfile - given value: ' . $importFile, 't3o_membership', 0);
+            t3lib_div::devLog('[tx_scheduler_ImportMember]: no importfile - given value: ' . $importFile,
+                't3o_membership', 0);
 
             return false;
         } else {

@@ -14,7 +14,6 @@
 
 /**
  * Class Tx_T3oMembership_Domain_Repository_MemberRepository
- *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
 class Tx_T3oMembership_Domain_Repository_MemberRepository extends Tx_Extbase_Persistence_Repository
@@ -24,7 +23,7 @@ class Tx_T3oMembership_Domain_Repository_MemberRepository extends Tx_Extbase_Per
      * @var array
      */
     protected $defaultOrderings = array(
-        'membership' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
+        'membership' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING,
         'name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
     );
 
@@ -38,8 +37,8 @@ class Tx_T3oMembership_Domain_Repository_MemberRepository extends Tx_Extbase_Per
         $query = $this->createQuery();
         $constraints = array();
         if ($filterString) {
-            $filterString = $this->getDatabaseConnection()
-                ->escapeStrForLike($filterString, 'tx_t3omembership_domain_model_member');
+            $filterString = $this->getDatabaseConnection()->escapeStrForLike($filterString,
+                'tx_t3omembership_domain_model_member');
             $constraints[] = $query->like('name', '%' . $filterString . '%');
         }
         if ($filterMembership) {
