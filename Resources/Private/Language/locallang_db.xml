@@ -25,6 +25,7 @@
 			<label index="tx_t3omembership_domain_model_membership">Membership</label>
 			<label index="tx_t3omembership_domain_model_membership.name">Name</label>
 			<label index="tx_t3omembership_domain_model_membership.logo">Logo</label>
+			<label index="tx_t3omembership_domain_model_membership.personal_membership">Personal membership (no company)</label>
 
 			<label index="tx_t3omembership_task_importmemberstask.name">Import members from CSV file</label>
 			<label index="tx_t3omembership_task_importmemberstask.description">Import members from CSV file</label>
