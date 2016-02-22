@@ -23,7 +23,7 @@ class Tx_T3oMembership_Domain_Repository_MemberRepository extends Tx_Extbase_Per
      * @var array
      */
     protected $defaultOrderings = array(
-        'membership' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING,
+        'membership' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
         'name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
     );
 
