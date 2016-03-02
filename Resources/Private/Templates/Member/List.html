@@ -1,23 +1,55 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 <f:section name="main">
-<f:flashMessages />
+	<f:flashMessages/>
 
-<f:render partial="Member/Filter" arguments="{filterTerm: filter}" />
-<f:render partial="Member/Membership" arguments="{members: members, memberships: memberships, filterTerm: filter}" />
+	<f:render partial="Member/Filter" arguments="{filterTerm: filter}"/>
+	<f:render partial="Member/Membership" arguments="{members: members, memberships: memberships, filterTerm: filter}"/>
 
-<table class="tx_t3omembership featured" >
-	<tr>
-		<th><f:translate key="tx_t3omembership_domain_model_member.name" /></th>
-		<th><f:translate key="tx_t3omembership_domain_model_member.membership" /></th>
-	</tr>
+	<table class="tx_t3omembership featured">
+		<tr>
+			<th>
+				<f:translate key="tx_t3omembership_domain_model_member.name"/>
+			</th>
+			<th>
+				<f:translate key="tx_t3omembership_domain_model_member.membership"/>
+			</th>
+		</tr>
 
-	<f:for each="{members}" as="member">
-		<f:cycle values="{0: 'tr-even', 1: 'tr-odd'}" as="cycle">
-			<tr class="{cycle}">
-				<td>{member.name}</td>
-				<td>{member.membership}</td>
-			</tr>
-		</f:cycle>
-	</f:for>
-</table>
+		<f:for each="{members}" as="member">
+			<f:cycle values="{0: 'tr-even', 1: 'tr-odd'}" as="cycle">
+				<tr class="{cycle}">
+					<f:if condition="{member.membership.personalMembership}">
+						<f:then>
+							<f:if condition="{member.lastname}">
+								<f:then>
+									<td>{member.firstname} {member.lastname}</td>
+								</f:then>
+
+								<f:else>
+									<td>{member.name}</td>
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							<td>
+								<f:if condition="{member.url}">
+									<f:then>
+										<f:link.external uri="{member.url}"
+										                 title="Website of TYPO3 {member.membership} member {member.name}"
+										                 target="_blank">
+											{member.name}
+										</f:link.external>
+									</f:then>
+									<f:else>
+										{member.name}
+									</f:else>
+								</f:if>
+							</td>
+						</f:else>
+					</f:if>
+					<td>{member.membership}</td>
+				</tr>
+			</f:cycle>
+		</f:for>
+	</table>
 </f:section>
