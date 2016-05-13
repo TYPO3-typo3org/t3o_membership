@@ -35,8 +35,8 @@ CREATE TABLE tx_t3omembership_domain_model_member (
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),
-	FULLTEXT (name)
 
+	FULLTEXT (name),
 	KEY language (l10n_parent,sys_language_uid)
 
 );
