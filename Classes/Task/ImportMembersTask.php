@@ -72,8 +72,8 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 continue;
             }
             $subscriptionNo = (int)$fields[14];
-            $endTime = strtotime($fields[15]);
-            $member = [
+            $endTime = $this->getMemberEndTime($fields[17], $fields[15]);
+            $member = array(
                 'name' => $fields[6],
                 'subscription_no' => $subscriptionNo,
                 'external_id' => (int)$fields[0],
@@ -83,7 +83,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 'country' => $fields[13],
                 'end_date' => $endTime,
                 'endtime' => $endTime,
-                'starttime' => strtotime(date('d.m.Y', $endTime) . ' -1 year'),
+                'starttime' => 0,
                 'membership' => $membershipUid,
                 'pid' => $this->getMembershipStoragePid(),
                 'crdate' => time(),
@@ -93,7 +93,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 'url' => $fields[80],
                 'firstname' => $fields[82],
                 'lastname' => $fields[83]
-            ];
+            );
 
             $this->createOrUpdateMemeber($subscriptionNo, $member);
         }
@@ -130,6 +130,25 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
         }
 
         $this->getDatabaseConnection()->sql_free_result($resource);
+    }
+
+    /**
+     * If the "Gekündigt" field ($cancelDate) is not empty, we use
+     * the value of the "Beginn" field ($endDate) as end date.
+     *
+     * @param string $cancelDate
+     * @param string $endDate
+     * @return array
+     */
+    protected function getMemberEndTime($cancelDate, $endDate)
+    {
+        if (empty($cancelDate) || empty($endDate)) {
+            return 0;
+        }
+
+        $endDateTime = DateTime::createFromFormat('d.m.Y', $endDate);
+        $endDateTime->setTime(0, 0, 0);
+        return $endDateTime->getTimestamp();
     }
 
     /**
