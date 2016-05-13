@@ -10,6 +10,7 @@
 			<label index="tx_t3omembership_domain_model_member">Member</label>
 			<label index="tx_t3omembership_domain_model_member.name">Name</label>
 			<label index="tx_t3omembership_domain_model_member.external_id">External Id</label>
+			<label index="tx_t3omembership_domain_model_member.subscription_no">Subscription number</label>
 			<label index="tx_t3omembership_domain_model_member.end_date">End Date</label>
 			<label index="tx_t3omembership_domain_model_member.address">Address</label>
 			<label index="tx_t3omembership_domain_model_member.zip">Zip</label>

@@ -5,6 +5,7 @@ CREATE TABLE tx_t3omembership_domain_model_member (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
+	subscription_no int(11) DEFAULT '0' NOT NULL,
 
 	name varchar(255) DEFAULT '' NOT NULL,
 	external_id int(11) DEFAULT '0' NOT NULL,
@@ -35,10 +36,9 @@ CREATE TABLE tx_t3omembership_domain_model_member (
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),
-
+	KEY subscription_no (subscription_no),
 	FULLTEXT (name),
 	KEY language (l10n_parent,sys_language_uid)
-
 );
 
 #
