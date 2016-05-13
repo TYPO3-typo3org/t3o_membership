@@ -72,7 +72,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 continue;
             }
             $subscriptionNo = (int)$fields[14];
-            $endTime = $this->getMemberEndTime($fields[17], $fields[15]);
+            $endDate = $this->getMemberEndDate($fields[15]);
+            // If the user has cancelled his membership "Gekündigt", we set the endtime enable field.
+            $endTime = !empty($fields[17]) ? $endDate : 0;
             $member = array(
                 'name' => $fields[6],
                 'subscription_no' => $subscriptionNo,
@@ -81,7 +83,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 'zip' => $fields[10],
                 'city' => $fields[11],
                 'country' => $fields[13],
-                'end_date' => $endTime,
+                'end_date' => $endDate,
                 'endtime' => $endTime,
                 'starttime' => 0,
                 'membership' => $membershipUid,
@@ -133,16 +135,14 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
     }
 
     /**
-     * If the "Gekündigt" field ($cancelDate) is not empty, we use
-     * the value of the "Beginn" field ($endDate) as end date.
+     * Parses the value of the "Beginn" column to a UNIX timestamp.
      *
-     * @param string $cancelDate
      * @param string $endDate
      * @return array
      */
-    protected function getMemberEndTime($cancelDate, $endDate)
+    protected function getMemberEndDate($endDate)
     {
-        if (empty($cancelDate) || empty($endDate)) {
+        if (empty($endDate)) {
             return 0;
         }
 
