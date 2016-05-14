@@ -19,6 +19,10 @@
  */
 class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_AbstractEntity
 {
+    /**
+     * @var Tx_Typo3Agencies_Domain_Model_Agency
+     */
+    protected $agency;
 
     /**
      * Member name
@@ -116,6 +120,14 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
      * @var Tx_T3oMembership_Domain_Model_Membership
      */
     protected $membership;
+
+    /**
+     * @return Tx_Typo3Agencies_Domain_Model_Agency
+     */
+    public function getAgency()
+    {
+        return $this->agency;
+    }
 
     /**
      * Returns the name

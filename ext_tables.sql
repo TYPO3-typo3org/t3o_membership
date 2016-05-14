@@ -20,6 +20,7 @@ CREATE TABLE tx_t3omembership_domain_model_member (
 	firstname varchar(255) DEFAULT '' NOT NULL,
 	lastname varchar(255) DEFAULT '' NOT NULL,
 	membership int(11) unsigned DEFAULT '0',
+	agency int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

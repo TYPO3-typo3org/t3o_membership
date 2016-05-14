@@ -216,3 +216,15 @@ $TCA['tx_t3omembership_domain_model_member'] = array(
         ),
     ),
 );
+
+if (t3lib_extMgm::isLoaded('typo3_agencies')) {
+    $TCA['tx_t3omembership_domain_model_member']['columns']['agency'] = array(
+        'config' => array(
+            'type' => 'select',
+            'foreign_table' => 'tx_typo3agencies_domain_model_agency',
+            'foreign_field' => 'related_member',
+            'minitems' => 0,
+            'maxitems' => 1,
+        ),
+    );
+}

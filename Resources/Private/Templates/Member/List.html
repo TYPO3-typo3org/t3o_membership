@@ -10,6 +10,7 @@
 			<th>
 				<f:translate key="tx_t3omembership_domain_model_member.name"/>
 			</th>
+			<th>Professional support</th>
 			<th>
 				<f:translate key="tx_t3omembership_domain_model_member.membership"/>
 			</th>
@@ -32,21 +33,45 @@
 						</f:then>
 						<f:else>
 							<td>
-								<f:if condition="{member.url}">
+								<f:if condition="{member.agency}">
 									<f:then>
-										<f:link.external uri="{member.url}"
-										                 title="Website of TYPO3 {member.membership} member {member.name}"
-										                 target="_blank">
+										<f:link.action action="show" controller="Agency" pluginName="Pi1"
+													   extensionName="Typo3Agencies" arguments="{agency: member.agency}"
+													   pageUid="{settings.agenciesPid}"
+													   title="Professional services of TYPO3 {member.membership} member {member.name}">
 											{member.name}
-										</f:link.external>
+										</f:link.action>
 									</f:then>
 									<f:else>
-										{member.name}
+										<f:if condition="{member.url}">
+											<f:then>
+												<f:link.external uri="{member.url}"
+																 title="Website of TYPO3 {member.membership} member {member.name}"
+																 target="_blank">
+													{member.name}
+												</f:link.external>
+											</f:then>
+											<f:else>
+												{member.name}
+											</f:else>
+										</f:if>
 									</f:else>
 								</f:if>
 							</td>
 						</f:else>
 					</f:if>
+					<td>
+						<f:if condition="{member.agency}">
+							<f:link.action action="show" controller="Agency" pluginName="Pi1"
+										   extensionName="Typo3Agencies" arguments="{agency: member.agency}"
+										   pageUid="{settings.agenciesPid}" class="supporttypes"
+										   title="Professional services of TYPO3 {member.membership} member {member.name}">
+								<f:if condition="{member.agency.trainingService}"><span class="ico i-training"></span></f:if>
+								<f:if condition="{member.agency.hostingService}"><span class="ico i-hosting"></span></f:if>
+								<f:if condition="{member.agency.developmentService}"><span class="ico i-development"></span></f:if>
+							</f:link.action>
+						</f:if>
+					</td>
 					<td>{member.membership}</td>
 				</tr>
 			</f:cycle>
