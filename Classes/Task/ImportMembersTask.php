@@ -14,6 +14,10 @@
  */
 class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
 {
+    /**
+     * @var array
+     */
+    protected $hookObjects = array();
 
     /**
      * @var string
@@ -61,10 +65,13 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
             return false;
         }
 
+        $this->initializeHookObjects();
+
         $fileData = file($importFile);
         array_shift($fileData);
         foreach ($fileData as $key => $line) {
             $line = iconv('ISO-8859-15', 'UTF-8', $line);
+            /** @noinspection PhpParamsInspection */
             $fields = t3lib_div::trimExplode("\t", $line);
             $membershipUid = $this->getMembershipUid($fields[12]);
             // Skip records with unknown membership types.
@@ -97,7 +104,13 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 'lastname' => $fields[83]
             );
 
-            $this->createOrUpdateMemeber($subscriptionNo, $member);
+            $memberUid = $this->createOrUpdateMember($subscriptionNo, $member);
+
+            foreach($this->hookObjects as $hookObject) {
+                if (method_exists($hookObject, 'postUpdateMemberData')) {
+                    $hookObject->postUpdateMemberData($memberUid, $member);
+                }
+            }
         }
 
         return true;
@@ -109,8 +122,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
      *
      * @param int $subscriptionNo
      * @param array $memberData
+     * @return int The uid of the updated / inserted member.
      */
-    protected function createOrUpdateMemeber($subscriptionNo, array $memberData)
+    protected function createOrUpdateMember($subscriptionNo, array $memberData)
     {
         $existingMember = $this->getDatabaseConnection()->exec_SELECTgetSingleRow(
             'uid',
@@ -119,9 +133,10 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
         );
 
         if (!empty($existingMember['uid'])) {
+            $memberUid = $existingMember['uid'];
             $resource = $this->getDatabaseConnection()->exec_UPDATEquery(
                 'tx_t3omembership_domain_model_member',
-                'uid=' . (int)$existingMember['uid'],
+                'uid=' . (int)$memberUid,
                 $memberData
             );
         } else {
@@ -129,9 +144,12 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 'tx_t3omembership_domain_model_member',
                 $memberData
             );
+            $memberUid = $this->getDatabaseConnection()->sql_insert_id();
         }
 
         $this->getDatabaseConnection()->sql_free_result($resource);
+
+        return (int)$memberUid;
     }
 
     /**
@@ -192,6 +210,25 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
     public function getMembershipStoragePid()
     {
         return $this->membershipStoragePid;
+    }
+
+    /**
+     * Instantiates all configured hook objects.
+     */
+    protected function initializeHookObjects()
+    {
+        if (!is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['t3o_membership']['importMemberTaksHooks'])) {
+            return;
+        }
+        foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['t3o_membership']['importMemberTaksHooks'] as $classData) {
+            $hookObject = t3lib_div::getUserObj($classData);
+            if (!is_object($hookObject)) {
+                throw new UnexpectedValueException(
+                    'The hook object class '. $classData . ' could not be instantiated.'
+                );
+            }
+            $this->hookObjects[] = $hookObject;
+        }
     }
 
     /**
