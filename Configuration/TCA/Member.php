@@ -46,14 +46,6 @@ $TCA['tx_t3omembership_domain_model_member'] = array(
                 'type' => 'passthrough',
             ),
         ),
-        't3ver_label' => array(
-            'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
-            'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'max' => 255,
-            )
-        ),
         'hidden' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
