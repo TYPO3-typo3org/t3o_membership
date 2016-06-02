@@ -61,15 +61,19 @@
 						</f:else>
 					</f:if>
 					<td>
-						<f:if condition="{member.agency}">
-							<f:link.action action="show" controller="Agency" pluginName="Pi1"
+						<f:if condition="{member.membership.personalMembership}">
+							<f:else>
+								<f:if condition="{member.agency}">
+									<f:link.action action="show" controller="Agency" pluginName="Pi1"
 										   extensionName="Typo3Agencies" arguments="{agency: member.agency}"
 										   pageUid="{settings.agenciesPid}" class="supporttypes"
 										   title="Professional services of TYPO3 {member.membership} member {member.name}">
-								<f:if condition="{member.agency.trainingService}"><span class="ico i-training"></span></f:if>
-								<f:if condition="{member.agency.hostingService}"><span class="ico i-hosting"></span></f:if>
-								<f:if condition="{member.agency.developmentService}"><span class="ico i-development"></span></f:if>
-							</f:link.action>
+										<f:if condition="{member.agency.trainingService}"><span class="ico i-training"></span></f:if>
+										<f:if condition="{member.agency.hostingService}"><span class="ico i-hosting"></span></f:if>
+										<f:if condition="{member.agency.developmentService}"><span class="ico i-development"></span></f:if>
+									</f:link.action>
+								</f:if>
+							</f:else>
 						</f:if>
 					</td>
 					<td>{member.membership}</td>
