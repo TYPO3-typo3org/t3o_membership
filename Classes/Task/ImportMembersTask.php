@@ -79,9 +79,15 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 continue;
             }
             $subscriptionNo = (int)$fields[14];
+
             $endDate = $this->getMemberEndDate($fields[15]);
+
             // If the user has cancelled his membership "Gekündigt", we set the endtime enable field.
             $endTime = !empty($fields[17]) ? $endDate : 0;
+
+            $hidden = false;
+            if ($endTime < time()) $hidden = true;
+
             $member = array(
                 'name' => $fields[6],
                 'subscription_no' => $subscriptionNo,
@@ -92,6 +98,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
                 'country' => $fields[13],
                 'end_date' => $endDate,
                 'endtime' => $endTime,
+                'hidden' => $hidden,
                 'starttime' => 0,
                 'membership' => $membershipUid,
                 'pid' => $this->getMembershipStoragePid(),
@@ -166,6 +173,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
 
         $endDateTime = DateTime::createFromFormat('d.m.Y', $endDate);
         $endDateTime->setTime(0, 0, 0);
+
         return $endDateTime->getTimestamp();
     }
 
