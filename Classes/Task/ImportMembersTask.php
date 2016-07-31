@@ -86,7 +86,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
             $endTime = !empty($fields[17]) ? $endDate : 0;
 
             $hidden = false;
-            if ($endTime < time()) $hidden = true;
+            if ($endTime > 0 && $endTime < time()) {
+                $hidden = true;
+            }
 
             $member = array(
                 'name' => $fields[6],
