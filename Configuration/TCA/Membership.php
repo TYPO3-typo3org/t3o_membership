@@ -6,10 +6,10 @@ if (!defined('TYPO3_MODE')) {
 $TCA['tx_t3omembership_domain_model_membership'] = array(
     'ctrl' => $TCA['tx_t3omembership_domain_model_membership']['ctrl'],
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, logo, personal_membership',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, logo, personal_membership, no_filter',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, logo, personal_membership, --div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, logo, personal_membership, no_filter, --div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -109,6 +109,13 @@ $TCA['tx_t3omembership_domain_model_membership'] = array(
         'personal_membership' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:t3o_membership/Resources/Private/Language/locallang_db.xml:tx_t3omembership_domain_model_membership.personal_membership',
+            'config' => array(
+                'type' => 'check',
+            ),
+        ),
+        'no_filter' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:t3o_membership/Resources/Private/Language/locallang_db.xml:tx_t3omembership_domain_model_membership.no_filter_option',
             'config' => array(
                 'type' => 'check',
             ),

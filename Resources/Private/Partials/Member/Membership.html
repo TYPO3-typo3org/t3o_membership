@@ -5,23 +5,28 @@
 				<f:image src="typo3conf/ext/t3o_membership/Resources/Public/Icons/ShowAllMembers.png" alt="Show all memberships" />
 			</f:link.action>
 		</li>
+
 		<f:if condition="{filterTerm}">
 			<f:then>
 				<f:groupedFor each="{members}" as="membershipsOfMembers" groupBy="membership" groupKey="membership">
-					<li>
-						<f:link.action action="list" arguments="{filter: '{filterTerm}', membership: '{membership.uid}'}">
-							<f:image src="uploads/tx_t3omembership/{membership.logo}" alt="{membership.name}" />
-						</f:link.action>
-					</li>
+					<f:if condition="{membership.noFilter}=0">
+						<li>
+							<f:link.action action="list" arguments="{filter: '{filterTerm}', membership: '{membership.uid}'}">
+								<f:image src="uploads/tx_t3omembership/{membership.logo}" alt="{membership.name}" />
+							</f:link.action>
+						</li>
+					</f:if>
 				</f:groupedFor>
 			</f:then>
 			<f:else>
 				<f:for each="{memberships}" as="membership">
-					<li>
-						<f:link.action action="list" arguments="{membership: '{membership.uid}'}">
-							<f:image src="uploads/tx_t3omembership/{membership.logo}" alt="{membership.name}" />
-						</f:link.action>
-					</li>
+					<f:if condition="{membership.noFilter}!=1">
+						<li>
+							<f:link.action action="list" arguments="{membership: '{membership.uid}'}">
+								<f:image src="uploads/tx_t3omembership/{membership.logo}" alt="{membership.name}" />
+							</f:link.action>
+						</li>
+					</f:if>
 				</f:for>
 			</f:else>
 		</f:if>

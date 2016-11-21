@@ -43,6 +43,29 @@ class Tx_T3oMembership_Domain_Model_Membership extends Tx_Extbase_DomainObject_A
      */
     protected $personalMembership;
 
+    /**
+     * noFilter
+     *
+     * @var bool
+     * @validate NotEmpty
+     */
+    protected $noFilter;
+
+    /**
+     * @return boolean
+     */
+    public function isNoFilter()
+    {
+        return $this->noFilter;
+    }
+
+    /**
+     * @param boolean $noFilter
+     */
+    public function setNoFilter($noFilter)
+    {
+        $this->noFilter = $noFilter;
+    }
 
     /**
      * @return string

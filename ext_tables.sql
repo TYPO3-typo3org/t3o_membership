@@ -52,6 +52,7 @@ CREATE TABLE tx_t3omembership_domain_model_membership (
 	name varchar(255) DEFAULT '' NOT NULL,
 	logo text NOT NULL,
 	personal_membership tinyint(4) DEFAULT '0' NOT NULL,
+	no_filter tinyint(4) DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -86,6 +86,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
             $endTime = !empty($fields[17]) ? $endDate : 0;
 
             $hidden = false;
+
             if ($endTime > 0 && $endTime < time()) {
                 $hidden = true;
             }
@@ -175,6 +176,9 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
 
         $endDateTime = DateTime::createFromFormat('d.m.Y', $endDate);
         $endDateTime->setTime(0, 0, 0);
+
+
+       # $endDateTime->add(new DateInterval('P1Y'));
 
         return $endDateTime->getTimestamp();
     }
