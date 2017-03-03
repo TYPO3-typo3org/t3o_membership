@@ -3,7 +3,6 @@ namespace T3o\T3oMembership\Controller;
 
 use T3o\T3oMembership\Domain\Repository\MemberRepository;
 use T3o\T3oMembership\Domain\Repository\MembershipRepository;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the TYPO3 CMS project.
