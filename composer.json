@@ -1,0 +1,23 @@
+{
+    "name": "t3o/t3o_slack",
+    "description": "Sign Up for a slack installation",
+    "type": "typo3-cms-extension",
+    "license": ["GPL-3.0+"],
+    "keywords": ["TYPO3 CMS", "Slack"],
+    "support": {
+        "email": "maintenance@typo3.org",
+        "issues": "https://github.com/TYPO3-typo3org/t3o_slack/issues"
+    },
+    "require": {
+        "typo3/cms-core": "8.5.0 - 8.9.99"
+    },
+    "autoload": {
+        "psr-4": {
+            "T3o\\T3oSlack\\": "Classes/"
+        }
+    },
+    "replace": {
+        "t3o_slack": "self.version",
+        "typo3-ter/t3o_slack": "self.version"
+    }
+}
