@@ -30,7 +30,7 @@ $tca = array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, firstname, lastname, external_id, end_date, address, zip, city, country, email, invoice_email, url, membership',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, firstname, lastname, external_id, subscription_no, end_date, address, zip, city, country, email, invoice_email, url, membership,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, firstname, lastname, external_id, subscription_no, end_date, address, zip, city, country, email, invoice_email, url, membership,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
