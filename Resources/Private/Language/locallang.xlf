@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-02T21:45:03Z"
+		  product-name="t3omembership">
+		<header/>
+		<body>
+			<trans-unit id="tx_t3omembership_domain_model_member">
+				<source>TYPO3 association member</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.name">
+				<source>Member name</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.external_id">
+				<source>externalId</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.end_date">
+				<source>endDate</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.address">
+				<source>address</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.zip">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.city">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.country">
+				<source>country</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.email">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.url">
+				<source>url</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.membership">
+				<source>Membership</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership">
+				<source>Membership</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership.name">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership.logo">
+				<source>logo</source>
+			</trans-unit>
+			<trans-unit id="filter">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="importFile">
+				<source>CSV file to import</source>
+			</trans-unit>
+			<trans-unit id="storagePid">
+				<source>Where to store the member records</source>
+			</trans-unit>
+			<trans-unit id="allMemberships">
+				<source>All memberships</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

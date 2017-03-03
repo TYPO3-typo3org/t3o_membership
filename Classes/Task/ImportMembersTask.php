@@ -1,4 +1,7 @@
 <?php
+namespace T3o\T3oMembership\Task;
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12,7 +15,7 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
+class ImportMembersTask extends \TYPO3\CMS\Extbase\Scheduler\Task
 {
     /**
      * @var array
@@ -39,7 +42,10 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
      */
     public function execute()
     {
-        t3lib_div::devLog('[tx_scheduler_ImportMember]: execute', 't3o_membership', 0);
+        /** @var $logger \TYPO3\CMS\Core\Log\Logger */
+        $logger = GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')->getLogger(__CLASS__);
+        $logger->debug('Execute');
+
         $membershipRecords = $this->getDatabaseConnection()->exec_SELECTgetRows(
             'uid, name',
             'tx_t3omembership_domain_model_membership',
@@ -52,16 +58,12 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
 
         // does the import file exist?
         $importFile = $this->getImportFile();
-        if (!t3lib_div::isAbsPath($importFile)) {
-            $importFile = t3lib_div::getFileAbsFileName($importFile);
+        if (!GeneralUtility::isAbsPath($importFile)) {
+            $importFile = GeneralUtility::getFileAbsFileName($importFile);
         }
 
         if (!file_exists($importFile)) {
-            t3lib_div::devLog(
-                '[tx_scheduler_ImportMember]: no importfile - given value: ' . $importFile,
-                't3o_membership',
-                0
-            );
+            $logger->debug('No importfile', array('filename' => $importFile));
             return false;
         }
 
@@ -72,7 +74,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
         foreach ($fileData as $key => $line) {
             $line = iconv('ISO-8859-15', 'UTF-8', $line);
             /** @noinspection PhpParamsInspection */
-            $fields = t3lib_div::trimExplode("\t", $line);
+            $fields = GeneralUtility::trimExplode("\t", $line);
             $membershipUid = $this->getMembershipUid($fields[12]);
             // Skip records with unknown membership types.
             if (empty($membershipUid)) {
@@ -92,31 +94,31 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
             }
 
             $member = array(
-                'name' => $fields[6],
+                'name'            => $fields[6],
                 'subscription_no' => $subscriptionNo,
-                'external_id' => (int)$fields[0],
-                'address' => $fields[7] !== '' ? $fields[7] : $fields[8],
-                'zip' => $fields[10],
-                'city' => $fields[11],
-                'country' => $fields[13],
-                'end_date' => $endDate,
-                'endtime' => $endTime,
-                'hidden' => $hidden,
-                'starttime' => 0,
-                'membership' => $membershipUid,
-                'pid' => $this->getMembershipStoragePid(),
-                'crdate' => time(),
-                'tstamp' => time(),
-                'invoice_email' => $fields[84],
-                'email' => $fields[79],
-                'url' => $fields[80],
-                'firstname' => $fields[82],
-                'lastname' => $fields[83]
+                'external_id'     => (int)$fields[0],
+                'address'         => $fields[7] !== '' ? $fields[7] : $fields[8],
+                'zip'             => $fields[10],
+                'city'            => $fields[11],
+                'country'         => $fields[13],
+                'end_date'        => $endDate,
+                'endtime'         => $endTime,
+                'hidden'          => $hidden,
+                'starttime'       => 0,
+                'membership'      => $membershipUid,
+                'pid'             => $this->getMembershipStoragePid(),
+                'crdate'          => time(),
+                'tstamp'          => time(),
+                'invoice_email'   => $fields[84],
+                'email'           => $fields[79],
+                'url'             => $fields[80],
+                'firstname'       => $fields[82],
+                'lastname'        => $fields[83]
             );
 
             $memberUid = $this->createOrUpdateMember($subscriptionNo, $member);
 
-            foreach($this->hookObjects as $hookObject) {
+            foreach ($this->hookObjects as $hookObject) {
                 if (method_exists($hookObject, 'postUpdateMemberData')) {
                     $hookObject->postUpdateMemberData($memberUid, $member);
                 }
@@ -130,7 +132,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
      * Checks if the member with the given subscription number already exists in the database.
      * If he exists, his data will be updated, otherwise a new record will be inserted.
      *
-     * @param int $subscriptionNo
+     * @param int   $subscriptionNo
      * @param array $memberData
      * @return int The uid of the updated / inserted member.
      */
@@ -178,7 +180,7 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
         $endDateTime->setTime(0, 0, 0);
 
 
-       # $endDateTime->add(new DateInterval('P1Y'));
+        # $endDateTime->add(new DateInterval('P1Y'));
 
         return $endDateTime->getTimestamp();
     }
@@ -231,14 +233,14 @@ class Tx_T3oMembership_Task_ImportMembersTask extends tx_scheduler_Task
      */
     protected function initializeHookObjects()
     {
-        if (!is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['t3o_membership']['importMemberTaksHooks'])) {
+        if (!is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['t3omembership']['importMemberTaksHooks'])) {
             return;
         }
-        foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['t3o_membership']['importMemberTaksHooks'] as $classData) {
-            $hookObject = t3lib_div::getUserObj($classData);
+        foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['t3omembership']['importMemberTaksHooks'] as $classData) {
+            $hookObject = GeneralUtility::getUserObj($classData);
             if (!is_object($hookObject)) {
-                throw new UnexpectedValueException(
-                    'The hook object class '. $classData . ' could not be instantiated.'
+                throw new UnexpectedValueException( // @TODO Namespace?
+                    'The hook object class ' . $classData . ' could not be instantiated.'
                 );
             }
             $this->hookObjects[] = $hookObject;

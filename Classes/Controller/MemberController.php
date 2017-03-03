@@ -1,4 +1,10 @@
 <?php
+namespace T3o\T3oMembership\Controller;
+
+use T3o\T3oMembership\Domain\Repository\MemberRepository;
+use T3o\T3oMembership\Domain\Repository\MembershipRepository;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -13,34 +19,34 @@
  */
 
 /**
- * Class Tx_T3oMembership_Controller_MemberController
+ * Class \T3oMembership\Controller\MemberController
  *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Controller_MemberController extends Tx_Extbase_MVC_Controller_ActionController
+class MemberController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
      * memberRepository
      *
-     * @var Tx_T3oMembership_Domain_Repository_MemberRepository
+     * @var MemberRepository
      */
     protected $memberRepository;
 
     /**
      * membershipRepository
      *
-     * @var Tx_T3oMembership_Domain_Repository_MembershipRepository
+     * @var MembershipRepository
      */
     protected $membershipRepository;
 
     /**
      * injectMemberRepository
      *
-     * @param Tx_T3oMembership_Domain_Repository_MemberRepository $memberRepository
+     * @param MemberRepository $memberRepository
      * @return void
      */
-    public function injectMemberRepository(Tx_T3oMembership_Domain_Repository_MemberRepository $memberRepository)
+    public function injectMemberRepository(MemberRepository $memberRepository)
     {
         $this->memberRepository = $memberRepository;
     }
@@ -48,11 +54,11 @@ class Tx_T3oMembership_Controller_MemberController extends Tx_Extbase_MVC_Contro
     /**
      * injectMembershipRepository
      *
-     * @param Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository
+     * @param MembershipRepository $membershipRepository
      * @return void
      */
     public function injectMembershipRepository(
-        Tx_T3oMembership_Domain_Repository_MembershipRepository $membershipRepository
+        MembershipRepository $membershipRepository
     ) {
         $this->membershipRepository = $membershipRepository;
     }
@@ -66,7 +72,6 @@ class Tx_T3oMembership_Controller_MemberController extends Tx_Extbase_MVC_Contro
     {
         $filterMembership = 0;
         $filterString = '';
-
         if ($this->request->hasArgument('filter') && $this->request->getArgument('filter')) {
             $filterString = htmlspecialchars($this->request->getArgument('filter'));
             $this->view->assign('filter', $filterString);

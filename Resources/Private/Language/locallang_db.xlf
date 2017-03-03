@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-02T21:45:03Z"
+		  product-name="t3omembership">
+		<header/>
+		<body>
+			<trans-unit id="tx_t3omembership_domain_model_member">
+				<source>Member</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.external_id">
+				<source>External Id</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.subscription_no">
+				<source>Subscription number</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.end_date">
+				<source>End Date</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.invoice_email">
+				<source>Invoice Email</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.url">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.firstname">
+				<source>Firstname</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.lastname">
+				<source>Lastname</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_member.membership">
+				<source>Membership</source>
+			</trans-unit>
+
+			<trans-unit id="tx_t3omembership_domain_model_membership">
+				<source>Membership</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership.personal_membership">
+				<source>Personal membership (no company)</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_domain_model_membership.no_filter_option">
+				<source>Do not use this membership type as filter</source>
+			</trans-unit>
+
+			<trans-unit id="tx_t3omembership_task_importmemberstask.name">
+				<source>Import members from CSV file</source>
+			</trans-unit>
+			<trans-unit id="tx_t3omembership_task_importmemberstask.description">
+				<source>Import members from CSV file</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

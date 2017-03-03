@@ -1,4 +1,10 @@
 <?php
+namespace T3o\T3oMembership\Task;
+
+use TYPO3\CMS\Extbase\Scheduler\Task;
+use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -17,37 +23,37 @@
  *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Task_ImportMembers_AdditionalFieldProvider implements tx_scheduler_AdditionalFieldProvider
+class ImportMembersAdditionalFieldProvider implements \TYPO3\CMS\Scheduler\AdditionalFieldProviderInterface
 {
 
     /**
      * Gets additional fields to render in the form to add/edit a task
      *
      * @param array $taskInfo
-     * @param tx_scheduler_Task $task
-     * @param tx_scheduler_Module $schedulerModule
+     * @param Task $task
+     * @param SchedulerModuleController $schedulerModule
      * @return array A two dimensional array, array('Identifier' => array('fieldId' => array('code' => '',
      *              'label' => '', 'cshKey' => '', 'cshLabel' => ''))
      */
-    public function getAdditionalFields(array &$taskInfo, $task, tx_scheduler_Module $schedulerModule)
+    public function getAdditionalFields(array &$taskInfo, Task $task, SchedulerModuleController $schedulerModule)
     {
         $additionalFields = array();
         // adds field for setting file path for CSV file to import
         $importFile = '';
         $membershipStoragePid = 0;
-        if ($task instanceof tx_scheduler_Task) {
+        if ($task instanceof Task) {
             $importFile = htmlspecialchars($task->getImportFile());
             $membershipStoragePid = (int)$task->getMembershipStoragePid();
         }
         $additionalFields['importFile'] = array(
             'code' => '<input type="text" name="tx_scheduler[importFile]" value="' . $importFile . '" />',
-            'label' => Tx_Extbase_Utility_Localization::translate('importFile', 't3o_membership')
+            'label' => LocalizationUtility::translate('importFile', 't3omembership')
         );
 
         // adds field for setting storage PID
         $additionalFields['storagePid'] = array(
             'code' => '<input type="text" name="tx_scheduler[storagePid]" value="' . $membershipStoragePid . '" />',
-            'label' => Tx_Extbase_Utility_Localization::translate('storagePid', 't3o_membership')
+            'label' => LocalizationUtility::translate('storagePid', 't3omembership')
         );
 
         return $additionalFields;
@@ -57,10 +63,10 @@ class Tx_T3oMembership_Task_ImportMembers_AdditionalFieldProvider implements tx_
      * Validates the additional fields' values
      *
      * @param array $submittedData
-     * @param tx_scheduler_Module $schedulerModule
+     * @param SchedulerModuleController $schedulerModule
      * @return boolean
      */
-    public function validateAdditionalFields(array &$submittedData, tx_scheduler_Module $schedulerModule)
+    public function validateAdditionalFields(array &$submittedData, SchedulerModuleController $schedulerModule)
     {
         // only validation for importFile would be a file_exists, but it will be validated in the task itself
 
@@ -71,10 +77,10 @@ class Tx_T3oMembership_Task_ImportMembers_AdditionalFieldProvider implements tx_
      * Takes care of saving the additional fields' values in the task's object
      *
      * @param array $submittedData
-     * @param tx_scheduler_Task|Tx_T3oMembership_Task_ImportMembersTask $task
+     * @param Task $task
      * @return void
      */
-    public function saveAdditionalFields(array $submittedData, tx_scheduler_Task $task)
+    public function saveAdditionalFields(array $submittedData, Task $task)
     {
         $task->setImportFile($submittedData['importFile']);
         $task->setMembershipStoragePid($submittedData['storagePid']);

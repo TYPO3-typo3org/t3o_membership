@@ -1,4 +1,8 @@
 <?php
+namespace T3o\T3oMembership\Domain\Model;
+
+use Typo3Agencies\Domain\Model\Agency;
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -13,14 +17,14 @@
  */
 
 /**
- * Class Tx_T3oMembership_Domain_Model_Member
+ * Class \T3oMembership\Domain\Model\Member
  *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_AbstractEntity
+class Member extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * @var Tx_Typo3Agencies_Domain_Model_Agency
+     * @var Agency
      */
     protected $agency;
 
@@ -117,12 +121,12 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
     /**
      * membership
      *
-     * @var Tx_T3oMembership_Domain_Model_Membership
+     * @var \T3o\T3oMembership\Domain\Model\Membership
      */
     protected $membership;
 
     /**
-     * @return Tx_Typo3Agencies_Domain_Model_Agency
+     * @return Agency
      */
     public function getAgency()
     {
@@ -370,7 +374,7 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
     /**
      * Returns the membership
      *
-     * @return Tx_T3oMembership_Domain_Model_Membership $membership
+     * @return Membership $membership
      */
     public function getMembership()
     {
@@ -380,10 +384,10 @@ class Tx_T3oMembership_Domain_Model_Member extends Tx_Extbase_DomainObject_Abstr
     /**
      * Sets the membership
      *
-     * @param Tx_T3oMembership_Domain_Model_Membership $membership
+     * @param Membership $membership
      * @return void
      */
-    public function setMembership(Tx_T3oMembership_Domain_Model_Membership $membership)
+    public function setMembership(Membership $membership)
     {
         $this->membership = $membership;
     }
