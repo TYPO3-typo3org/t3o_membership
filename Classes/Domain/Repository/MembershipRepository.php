@@ -1,4 +1,8 @@
 <?php
+namespace T3o\T3oMembership\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -17,14 +21,13 @@
  *
  * @author Thomas Löffler <thomas.loeffler@typo3.org>
  */
-class Tx_T3oMembership_Domain_Repository_MembershipRepository extends Tx_Extbase_Persistence_Repository
+class MembershipRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     /**
      * @var array
      */
     protected $defaultOrderings = array(
-        'uid' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING
+        'uid' => QueryInterface::ORDER_ASCENDING
     );
-
 }
